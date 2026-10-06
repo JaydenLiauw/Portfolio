@@ -27,16 +27,6 @@ nav a:hover {
     border-bottom: 0.4em solid var(--color-accent);
     padding-bottom: 0.1em;
 }
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-}
-
-form label {
-    display: flex;
-    flex-direction: column;
-}
 form button {
     grid-column: 1 / -1;
 }
@@ -63,9 +53,14 @@ h1, h2, h3, h4, h5, h6 {
     line-height: 1.1;
     text-wrap: balance;
 }
+label {
+    display: block;
+    margin-block: 1em;
+}
 input,
 textarea,
 button {
+    display: block;
     font: inherit;
     width: 100%;
     box-sizing: border-box;
