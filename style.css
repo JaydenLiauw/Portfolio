@@ -53,7 +53,9 @@ h1, h2, h3, h4, h5, h6 {
     text-wrap: balance;
 }
 label {
-    display: block;
+    display: grid;
+    grid-template-columns: 6em 1fr;
+    align-items: start;
     margin-block: 1em;
 }
 input,
