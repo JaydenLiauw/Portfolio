@@ -78,3 +78,6 @@ section h2 {
     border-bottom: 2px solid var(--color-accent);
     padding-bottom: 0.2em;
 }
+body {
+    background-color: red;
+}
