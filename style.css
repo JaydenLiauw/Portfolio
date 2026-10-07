@@ -19,6 +19,9 @@ nav a {
     text-decoration: none;
     color: inherit;
     padding: 0.5em; 
+    nav a {
+    background-color: red;
+}
 nav a.current {
     border-bottom: 0.4em solid oklch(80% 3% 200);
     padding-bottom: 0.1em;
@@ -77,7 +80,4 @@ time {
 section h2 {
     border-bottom: 2px solid var(--color-accent);
     padding-bottom: 0.2em;
-}
-body {
-    background-color: red;
 }
