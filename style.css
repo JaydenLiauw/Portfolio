@@ -26,6 +26,11 @@ nav a.current {
 nav a:hover {
     font-size: 200%;
 }
+
+.projects {
+    display: grid;
+    ...
+}
 }
 .projects {
     display: grid;
