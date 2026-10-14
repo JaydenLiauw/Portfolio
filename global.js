@@ -56,10 +56,20 @@ document.body.insertAdjacentHTML(
 
 const select = document.querySelector('.color-scheme select');
 
+// Get the previously saved theme
+const savedTheme = localStorage.getItem('colorScheme') || 'auto';
+
+// Apply the saved theme
+select.value = savedTheme;
+document.documentElement.style.colorScheme =
+    savedTheme === 'auto' ? 'light dark' : savedTheme;
+
+// Save the theme whenever the user changes it
 select.addEventListener('change', function (event) {
     const theme = event.target.value;
 
     document.documentElement.style.colorScheme =
         theme === 'auto' ? 'light dark' : theme;
+
+    localStorage.setItem('colorScheme', theme);
 });
-    
