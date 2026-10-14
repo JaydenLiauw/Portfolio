@@ -39,3 +39,17 @@ let currentLink = navLinks.find(
 if (currentLink) {
     currentLink.classList.add('current');
 }
+
+document.body.insertAdjacentHTML(
+    'afterbegin',
+    `
+    <label class="color-scheme">
+        Theme:
+        <select>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+            <option value="auto">Automatic</option>
+        </select>
+    </label>
+    `
+);
