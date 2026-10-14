@@ -8,7 +8,7 @@ const pages = [
     { url: '', title: 'Home' },
     { url: 'projects/', title: 'Projects' },
     { url: 'contact/', title: 'Contact' },
-    { url: 'resume/', title: 'Resume' },
+    { url: 'Resume/', title: 'Resume' },
     { url: 'https://github.com/JaydenLiauw', title: 'GitHub' }
 ];
 
