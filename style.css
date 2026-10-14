@@ -87,3 +87,14 @@ nav a.current {
     border-bottom: 0.4em solid;
     padding-bottom: 0.1em;
 }
+
+:root {
+    color-scheme: light dark;
+}
+
+.color-scheme {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 80%;
+}

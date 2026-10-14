@@ -53,3 +53,13 @@ document.body.insertAdjacentHTML(
     </label>
     `
 );
+
+const select = document.querySelector('.color-scheme select');
+
+select.addEventListener('change', function (event) {
+    const theme = event.target.value;
+
+    document.documentElement.style.colorScheme =
+        theme === 'auto' ? 'light dark' : theme;
+});
+    
