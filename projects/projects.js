@@ -13,7 +13,7 @@ projects.forEach(project => {
 
     article.innerHTML = `
         <h2>${project.title}</h2>
-        <img src="../${project.image}" alt="${project.title}">
+        <img src="${project.image}" alt="${project.title}">
         <p>${project.description}</p>
     `;
 
