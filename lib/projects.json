@@ -1,0 +1,20 @@
+[
+  {
+    "title": "My First Project",
+    "year": 2026,
+    "image": "images/project1.png",
+    "description": "This is my first project."
+  },
+  {
+    "title": "My Second Project",
+    "year": 2026,
+    "image": "images/project2.png",
+    "description": "This is my second project."
+  },
+  {
+    "title": "My Third Project",
+    "year": 2026,
+    "image": "images/project3.png",
+    "description": "This is my third project."
+  }
+]
