@@ -98,3 +98,12 @@ nav a.current {
     right: 1rem;
     font-size: 80%;
 }
+.latest-projects {
+    clear: both;
+    display: flow-root;
+    margin-top: 2rem;
+}
+
+.latest-projects h2 {
+    margin-bottom: 1rem;
+}
