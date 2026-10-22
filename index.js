@@ -21,3 +21,16 @@ latestProjects.forEach(project => {
 
     projectsContainer.appendChild(article);
 });
+async function fetchGitHubData(username) {
+    const response = await fetch(`https://api.github.com/users/${username}`);
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch GitHub data');
+    }
+
+    return await response.json();
+}
+
+const githubData = await fetchGitHubData('jaydenliauw');
+
+console.log(githubData);
