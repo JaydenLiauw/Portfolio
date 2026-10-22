@@ -34,3 +34,11 @@ async function fetchGitHubData(username) {
 const githubData = await fetchGitHubData('jaydenliauw');
 
 console.log(githubData);
+const profileStats = document.querySelector('#profile-stats');
+
+profileStats.innerHTML = `
+    <p>Public Repositories: ${githubData.public_repos}</p>
+    <p>Followers: ${githubData.followers}</p>
+    <p>Following: ${githubData.following}</p>
+    <p>Public Gists: ${githubData.public_gists}</p>
+`;
