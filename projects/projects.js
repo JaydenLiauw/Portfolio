@@ -45,12 +45,14 @@ svg.selectAll('path')
     .attr('fill', (d, i) => colors(i))
     .style('cursor', 'pointer')
     .on('click', (event, d) => {
-        const year = d.data[0];
+    const year = d.data[0];
 
-        selectedYear = selectedYear === year ? null : year;
+    selectedYear = selectedYear === year ? null : year;
 
-        console.log('Selected year:', selectedYear);
-    });
+    console.log('Selected year:', selectedYear);
+
+    updateProjects();
+});
 
 legend.selectAll('li')
     .data(rolledData)
@@ -83,3 +85,30 @@ searchBar.addEventListener('input', (event) => {
         projectsContainer.appendChild(article);
     });
 });
+function updateProjects() {
+    const query = searchBar.value.toLowerCase();
+
+    const filteredProjects = projects.filter((project) => {
+        const values = Object.values(project).join(' ').toLowerCase();
+
+        const matchesSearch = values.includes(query);
+        const matchesYear = selectedYear === null ||
+                            project.year === selectedYear;
+
+        return matchesSearch && matchesYear;
+    });
+
+    projectsContainer.innerHTML = '';
+
+    filteredProjects.forEach(project => {
+        const article = document.createElement('article');
+
+        article.innerHTML = `
+            <h2>${project.title}</h2>
+            <img src="${project.image}" alt="${project.title}">
+            <p>${project.description}</p>
+        `;
+
+        projectsContainer.appendChild(article);
+    });
+}
