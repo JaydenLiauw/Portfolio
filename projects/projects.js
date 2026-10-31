@@ -32,3 +32,22 @@ const pieGenerator = d3.pie().value(d => d[1]);
 const arcData = pieGenerator(rolledData);
 
 console.log(arcData);
+const colors = d3.scaleOrdinal(d3.schemeTableau10);
+
+const svg = d3.select('#projects-pie-plot')
+    .attr('viewBox', '-50 -50 100 100');
+
+svg.selectAll('path')
+    .data(arcData)
+    .join('path')
+    .attr('d', arcGenerator)
+    .attr('fill', (d, i) => colors(i));
+    const legend = d3.select('.legend');
+
+legend.selectAll('li')
+    .data(rolledData)
+    .join('li')
+    .html((d, i) => `
+        <span style="background-color: ${colors(i)}"></span>
+        ${d[0]} <em>(${d[1]} projects)</em>
+    `);
