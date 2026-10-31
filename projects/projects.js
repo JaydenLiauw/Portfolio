@@ -25,3 +25,10 @@ const rolledData = d3.rollups(
     d => d.year
 );
 console.log(rolledData);
+const arcGenerator = d3.arc().innerRadius(0).outerRadius(50);
+
+const pieGenerator = d3.pie().value(d => d[1]);
+
+const arcData = pieGenerator(rolledData);
+
+console.log(arcData);
