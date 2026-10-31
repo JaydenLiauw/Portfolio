@@ -126,3 +126,24 @@ nav a.current {
     margin: 2em 0;
     overflow: visible;
 }
+.legend {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    margin-bottom: 2em;
+}
+
+.legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.legend span {
+    width: 1em;
+    height: 1em;
+    display: inline-block;
+    border-radius: 0.2em;
+}
