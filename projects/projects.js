@@ -54,6 +54,7 @@ svg.selectAll('path')
     updateProjects();
 });
 
+const legend = d3.select('.legend');
 legend.selectAll('li')
     .data(rolledData)
     .join('li')
