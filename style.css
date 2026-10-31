@@ -147,3 +147,21 @@ nav a.current {
     display: inline-block;
     border-radius: 0.2em;
 }
+.chart-container {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    margin-bottom: 2em;
+}
+
+.chart-container .legend {
+    border: 1px solid #ddd;
+    padding: 1em;
+    margin: 0;
+    flex: 1;
+}
+
+.chart-container #projects-pie-plot {
+    flex-shrink: 0;
+    margin: 0;
+}
