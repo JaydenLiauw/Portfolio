@@ -19,3 +19,9 @@ projects.forEach(project => {
 
     projectsContainer.appendChild(article);
 });
+const rolledData = d3.rollups(
+    projects,
+    v => v.length,
+    d => d.year
+);
+console.log(rolledData);
