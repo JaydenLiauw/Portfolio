@@ -5,6 +5,7 @@ async function getProjects() {
 }
 
 const projects = await getProjects();
+let selectedYear = null;
 console.log(projects);
 const projectsContainer = document.querySelector('.projects');
 
@@ -41,8 +42,15 @@ svg.selectAll('path')
     .data(arcData)
     .join('path')
     .attr('d', arcGenerator)
-    .attr('fill', (d, i) => colors(i));
-    const legend = d3.select('.legend');
+    .attr('fill', (d, i) => colors(i))
+    .style('cursor', 'pointer')
+    .on('click', (event, d) => {
+        const year = d.data[0];
+
+        selectedYear = selectedYear === year ? null : year;
+
+        console.log('Selected year:', selectedYear);
+    });
 
 legend.selectAll('li')
     .data(rolledData)
