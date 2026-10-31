@@ -120,7 +120,9 @@ nav a.current {
     border-radius: 8px;
 }
 #projects-pie-plot {
-    max-width: 20em;
-    margin-block: 2em;
+    width: 250px;
+    height: 250px;
+    display: block;
+    margin: 2em 0;
     overflow: visible;
 }
