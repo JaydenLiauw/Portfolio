@@ -49,9 +49,14 @@ svg.selectAll('path')
 
     selectedYear = selectedYear === year ? null : year;
 
-    console.log('Selected year:', selectedYear);
+   console.log('Selected year:', selectedYear);
 
-    updateProjects();
+svg.selectAll('path')
+    .attr('opacity', d =>
+        selectedYear === null || d.data[0] === selectedYear ? 1 : 0.3
+    );
+
+updateProjects();
 });
 
 const legend = d3.select('.legend');
@@ -64,27 +69,8 @@ legend.selectAll('li')
     `);
     const searchBar = document.querySelector('.searchBar');
 
-searchBar.addEventListener('input', (event) => {
-    const query = event.target.value.toLowerCase();
-
-    const filteredProjects = projects.filter((project) => {
-        const values = Object.values(project).join(' ').toLowerCase();
-        return values.includes(query);
-    });
-
-    projectsContainer.innerHTML = '';
-
-    filteredProjects.forEach(project => {
-        const article = document.createElement('article');
-
-        article.innerHTML = `
-            <h2>${project.title}</h2>
-            <img src="${project.image}" alt="${project.title}">
-            <p>${project.description}</p>
-        `;
-
-        projectsContainer.appendChild(article);
-    });
+searchBar.addEventListener('input', () => {
+    updateProjects();
 });
 function updateProjects() {
     const query = searchBar.value.toLowerCase();
