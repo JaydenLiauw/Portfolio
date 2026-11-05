@@ -53,7 +53,7 @@ const yScale = d3.scaleLinear()
     .join('circle')
     .attr('cx', d => xScale(d.datetime))
     .attr('cy', d => yScale(d.hourFrac))
-    .attr('r', 5)
+    .attr('r', d => Math.sqrt(d.totalLines) * 2)
     .attr('fill', 'steelblue');
     
 const xAxis = d3.axisBottom(xScale);
