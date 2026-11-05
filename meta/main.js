@@ -56,7 +56,9 @@ const yScale = d3.scaleLinear()
     .attr('r', d => Math.sqrt(d.totalLines) * 2)
     .attr('fill', 'steelblue');
     
-const xAxis = d3.axisBottom(xScale);
+const xAxis = d3.axisBottom(xScale)
+    .ticks(5)
+    .tickFormat(d3.timeFormat('%b %d'));
 
 svg.append('g')
     .attr('transform', `translate(0, ${usableArea.bottom})`)
