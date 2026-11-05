@@ -69,3 +69,12 @@ const yAxis = d3.axisLeft(yScale);
 svg.append('g')
     .attr('transform', `translate(${usableArea.left}, 0)`)
     .call(yAxis);
+    
+svg.append('g')
+    .attr('class', 'gridlines')
+    .attr('transform', `translate(${usableArea.left}, 0)`)
+    .call(
+        d3.axisLeft(yScale)
+            .tickSize(-usableArea.width)
+            .tickFormat('')
+    );
