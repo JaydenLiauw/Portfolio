@@ -1,0 +1,8 @@
+.gridlines line {
+    stroke: #ddd;
+    stroke-opacity: 0.5;
+}
+
+.gridlines path {
+    display: none;
+}

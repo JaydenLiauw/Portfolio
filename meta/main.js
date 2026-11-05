@@ -55,6 +55,11 @@ const yScale = d3.scaleLinear()
     .attr('cy', d => yScale(d.hourFrac))
     .attr('r', d => Math.sqrt(d.totalLines) * 2)
     .attr('fill', 'steelblue');
+
+dots.append('title')
+    .text(d => `Commit: ${d.id}
+Date: ${d.datetime.toLocaleString()}
+Lines: ${d.totalLines}`);
     
 const xAxis = d3.axisBottom(xScale)
     .ticks(5)
@@ -69,7 +74,7 @@ const yAxis = d3.axisLeft(yScale);
 svg.append('g')
     .attr('transform', `translate(${usableArea.left}, 0)`)
     .call(yAxis);
-    
+
 svg.append('g')
     .attr('class', 'gridlines')
     .attr('transform', `translate(${usableArea.left}, 0)`)
