@@ -48,3 +48,21 @@
     line-height: 1.5;
     margin-top: 1rem;
 }
+.tooltip {
+    position: fixed;
+    top: 1em;
+    left: 1em;
+    padding: 1em;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 0.5em;
+    box-shadow: 0 2px 8px #0002;
+}
+
+.tooltip dt {
+    font-weight: bold;
+}
+
+.tooltip dd {
+    margin: 0 0 0.5em 0;
+}

@@ -65,6 +65,15 @@ Lines of Code: ${d.totalLines}`);
 dots.on('click', (event, d) => {
     window.open(d.url, '_blank', 'noopener,noreferrer');
 });
+
+dots.on('mouseenter', (event, commit) => {
+    renderTooltipContent(commit);
+    updateTooltipVisibility(true);
+});
+
+dots.on('mouseleave', () => {
+    updateTooltipVisibility(false);
+});
     
 const xAxis = d3.axisBottom(xScale)
     .ticks(5)
@@ -114,3 +123,26 @@ svg.append('text')
     .attr('text-anchor', 'middle')
     .attr('font-size', '14px')
     .text('Commit Date');
+    function updateTooltipVisibility(isVisible) {
+    const tooltip = document.getElementById('commit-tooltip');
+    tooltip.hidden = !isVisible;
+}
+function renderTooltipContent(commit) {
+    const link = document.getElementById('commit-link');
+    const date = document.getElementById('commit-date');
+
+    if (Object.keys(commit).length === 0) return;
+
+    link.href = commit.url;
+    link.textContent = commit.id;
+
+    date.textContent = commit.datetime?.toLocaleString('en', {
+        dateStyle: 'full',
+    });
+
+    const time = document.getElementById('commit-time');
+    const lines = document.getElementById('commit-lines');
+
+    time.textContent = commit.datetime.toLocaleTimeString();
+    lines.textContent = commit.totalLines;
+}

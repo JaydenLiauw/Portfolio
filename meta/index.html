@@ -21,6 +21,24 @@
   <dl id="stats"></dl>
   <h2>Commits by Time of Day</h2>
   <div id="chart"></div>
+  <dl id="commit-tooltip" class="info tooltip" hidden>
+    <dt>Commit</dt>
+    <dd>
+        <a href="" id="commit-link" target="_blank"></a>
+    </dd>
+
+    <dt>Date</dt>
+    <dd id="commit-date"></dd>
+
+    <dt>Time</dt>
+    <dd id="commit-time"></dd>
+
+    <dt>Author</dt>
+    <dd id="commit-author"></dd>
+
+    <dt>Lines Edited</dt>
+    <dd id="commit-lines"></dd>
+</dl>
   <p class="chart-description">
     Each dot represents a Git commit. Larger dots indicate
     more lines of code associated with that commit.
