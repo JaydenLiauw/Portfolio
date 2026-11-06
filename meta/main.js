@@ -71,6 +71,10 @@ dots.on('mouseenter', (event, commit) => {
     updateTooltipVisibility(true);
 });
 
+dots.on('mousemove', (event) => {
+    updateTooltipPosition(event);
+});
+
 dots.on('mouseleave', () => {
     updateTooltipVisibility(false);
 });
@@ -145,4 +149,10 @@ function renderTooltipContent(commit) {
 
     time.textContent = commit.datetime.toLocaleTimeString();
     lines.textContent = commit.totalLines;
+}
+function updateTooltipPosition(event) {
+    const tooltip = document.getElementById('commit-tooltip');
+
+    tooltip.style.left = `${event.clientX + 10}px`;
+    tooltip.style.top = `${event.clientY + 10}px`;
 }
