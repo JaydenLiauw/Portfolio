@@ -12,6 +12,7 @@ let commits = d3.groups(data, (d) => d.commit)
         id: commit,
         url: `https://github.com/JaydenLiauw/Portfolio/commit/${commit}`,
         datetime: lines[0].datetime,
+        author: lines[0].author,
         hourFrac: lines[0].datetime.getHours()
             + lines[0].datetime.getMinutes() / 60,
         totalLines: lines.length,
@@ -149,6 +150,8 @@ function renderTooltipContent(commit) {
 
     time.textContent = commit.datetime.toLocaleTimeString();
     lines.textContent = commit.totalLines;
+    const author = document.getElementById('commit-author');
+author.textContent = commit.author;
 }
 function updateTooltipPosition(event) {
     const tooltip = document.getElementById('commit-tooltip');
