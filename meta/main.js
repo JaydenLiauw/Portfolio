@@ -173,17 +173,19 @@ function createBrushSelector(svg) {
             .on('start brush end', brushed)
     );
 }
-
+let selectedCommits = [];
 function brushed(event) {
     const selection = event.selection;
 
-    if (!selection) {
-        return;
-    }
+   if (!selection) {
+    selectedCommits = [];
+    dots.classed('selected', false);
+    return;
+}
 
     const [[x0, y0], [x1, y1]] = selection;
 
-    const selectedCommits = commits.filter(commit => {
+    selectedCommits = commits.filter(commit => {
         const x = xScale(commit.datetime);
         const y = yScale(commit.hourFrac);
 
