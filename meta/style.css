@@ -10,14 +10,17 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1rem;
+    text-align: center;
 }
 
 #stats dt {
+    grid-row: 1;
     font-size: 0.85rem;
     color: gray;
 }
 
 #stats dd {
+    grid-row: 2;
     font-size: 1.5rem;
     font-weight: bold;
     margin: 0;
