@@ -195,6 +195,3 @@ function brushed(event) {
     selectedCommits.some(commit => commit.id === d.id)
 );
 }
-circle.selected {
-    fill: orange;
-}
