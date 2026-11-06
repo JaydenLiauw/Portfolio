@@ -48,13 +48,18 @@ const yScale = d3.scaleLinear()
     .append('svg')
     .attr('viewBox', `0 0 ${width} ${height}`)
     .style('overflow', 'visible');
+    const [minLines, maxLines] = d3.extent(commits, d => d.totalLines);
+
+    const rScale = d3.scaleLinear()
+    .domain([minLines, maxLines])
+    .range([2, 30]);
     const dots = svg.append('g')
     .selectAll('circle')
     .data(commits)
     .join('circle')
     .attr('cx', d => xScale(d.datetime))
     .attr('cy', d => yScale(d.hourFrac))
-    .attr('r', d => Math.sqrt(d.totalLines) * 2)
+    .attr('r', d => rScale(d.totalLines))
     .attr('fill', 'steelblue');
 
 dots.append('title')
