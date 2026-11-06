@@ -179,3 +179,13 @@ nav a.current {
         white-space: nowrap;
     }
 }
+@media (max-width: 600px) {
+    .color-scheme {
+        position: static;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        margin: 1rem auto;
+    }
+}
