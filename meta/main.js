@@ -191,4 +191,10 @@ function brushed(event) {
     });
 
     console.log(selectedCommits);
+    dots.classed('selected', d =>
+    selectedCommits.some(commit => commit.id === d.id)
+);
+}
+circle.selected {
+    fill: orange;
 }
