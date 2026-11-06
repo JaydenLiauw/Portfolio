@@ -83,3 +83,17 @@ svg.append('g')
             .tickSize(-usableArea.width)
             .tickFormat('')
     );
+    const stats = [
+    { label: 'Total Lines', value: data.length },
+    { label: 'Total Commits', value: commits.length },
+    { label: 'Total Files', value: new Set(data.map(d => d.file)).size },
+    { label: 'Maximum Depth', value: d3.max(data, d => d.depth) },
+    { label: 'Longest Line', value: d3.max(data, d => d.length) },
+];
+
+const statsContainer = d3.select('#stats');
+
+stats.forEach(stat => {
+    statsContainer.append('dt').text(stat.label);
+    statsContainer.append('dd').text(stat.value);
+});
