@@ -180,6 +180,7 @@ function brushed(event) {
    if (!selection) {
     selectedCommits = [];
     dots.classed('selected', false);
+    document.getElementById('selection-count').textContent = 'No commits selected';
     return;
 }
 
@@ -198,4 +199,25 @@ function brushed(event) {
 );
 document.getElementById('selection-count').textContent =
     `${selectedCommits.length} commits selected`;
+    updateLanguageBreakdown();
+}
+function updateLanguageBreakdown() {
+    const selectedIds = new Set(selectedCommits.map(d => d.id));
+
+    const selectedLines = data.filter(d => selectedIds.has(d.commit));
+
+    const languageCounts = d3.rollups(
+        selectedLines,
+        lines => lines.length,
+        d => d.type
+    );
+
+    const container = d3.select('#language-breakdown');
+
+container.selectAll('*').remove();
+
+languageCounts.forEach(([language, count]) => {
+    container.append('dt').text(language);
+    container.append('dd').text(count);
+});
 }
