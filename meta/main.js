@@ -181,6 +181,7 @@ function brushed(event) {
     selectedCommits = [];
     dots.classed('selected', false);
     document.getElementById('selection-count').textContent = 'No commits selected';
+    updateLanguageBreakdown();
     return;
 }
 
