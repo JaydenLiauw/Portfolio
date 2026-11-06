@@ -107,3 +107,9 @@ svg.append('text')
     .attr('text-anchor', 'start')
     .attr('font-size', '14px')
     .text('Time of Day');
+    svg.append('text')
+    .attr('x', usableArea.left + usableArea.width / 2)
+    .attr('y', usableArea.bottom + 28)
+    .attr('text-anchor', 'middle')
+    .attr('font-size', '14px')
+    .text('Commit Date');
