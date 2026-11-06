@@ -60,6 +60,10 @@ dots.append('title')
     .text(d => `Commit: ${d.id}
 Date: ${d.datetime.toLocaleString()}
 Lines: ${d.totalLines}`);
+
+dots.on('click', (event, d) => {
+    window.open(d.url, '_blank', 'noopener,noreferrer');
+});
     
 const xAxis = d3.axisBottom(xScale)
     .ticks(5)
