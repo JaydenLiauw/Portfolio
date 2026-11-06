@@ -42,3 +42,19 @@
 #chart circle {
     cursor: pointer;
 }
+.chart-description {
+    font-size: 0.9rem;
+    color: gray;
+    line-height: 1.5;
+    margin-top: 1rem;
+}
+@media (max-width: 600px) {
+    #stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #stats dt,
+    #stats dd {
+        grid-row: auto;
+    }
+}
