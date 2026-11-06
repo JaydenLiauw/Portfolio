@@ -196,4 +196,6 @@ function brushed(event) {
     dots.classed('selected', d =>
     selectedCommits.some(commit => commit.id === d.id)
 );
+document.getElementById('selection-count').textContent =
+    `${selectedCommits.length} commits selected`;
 }
