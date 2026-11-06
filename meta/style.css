@@ -25,3 +25,8 @@
     font-weight: bold;
     margin: 0;
 }
+#chart svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
