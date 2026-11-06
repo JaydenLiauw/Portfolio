@@ -175,5 +175,20 @@ function createBrushSelector(svg) {
 }
 
 function brushed(event) {
-    console.log(event.selection);
+    const selection = event.selection;
+
+    if (!selection) {
+        return;
+    }
+
+    const [[x0, y0], [x1, y1]] = selection;
+
+    const selectedCommits = commits.filter(commit => {
+        const x = xScale(commit.datetime);
+        const y = yScale(commit.hourFrac);
+
+        return x >= x0 && x <= x1 && y >= y0 && y <= y1;
+    });
+
+    console.log(selectedCommits);
 }
