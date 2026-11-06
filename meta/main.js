@@ -57,9 +57,10 @@ const yScale = d3.scaleLinear()
     .attr('fill', 'steelblue');
 
 dots.append('title')
-    .text(d => `Commit: ${d.id}
-Date: ${d.datetime.toLocaleString()}
-Lines: ${d.totalLines}`);
+    .text(d => `Commit: ${d.id.slice(0, 7)}
+Date: ${d.datetime.toLocaleDateString()}
+Time: ${d.datetime.toLocaleTimeString()}
+Lines of Code: ${d.totalLines}`);
 
 dots.on('click', (event, d) => {
     window.open(d.url, '_blank', 'noopener,noreferrer');
@@ -109,7 +110,7 @@ svg.append('text')
     .text('Time of Day');
     svg.append('text')
     .attr('x', usableArea.left + usableArea.width / 2)
-    .attr('y', usableArea.bottom + 28)
+    .attr('y', usableArea.bottom + 45)
     .attr('text-anchor', 'middle')
     .attr('font-size', '14px')
     .text('Commit Date');
