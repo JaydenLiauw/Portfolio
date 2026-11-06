@@ -101,3 +101,9 @@ stats.forEach(stat => {
     statsContainer.append('dt').text(stat.label);
     statsContainer.append('dd').text(stat.value);
 });
+svg.append('text')
+    .attr('x', usableArea.left)
+    .attr('y', usableArea.top - 5)
+    .attr('text-anchor', 'start')
+    .attr('font-size', '14px')
+    .text('Time of Day');
