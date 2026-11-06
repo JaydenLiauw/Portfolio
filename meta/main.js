@@ -50,12 +50,14 @@ const yScale = d3.scaleLinear()
     .style('overflow', 'visible');
     const [minLines, maxLines] = d3.extent(commits, d => d.totalLines);
 
-    const rScale = d3.scaleLinear()
+    const rScale = d3.scaleSqrt()
     .domain([minLines, maxLines])
     .range([2, 30]);
+    
+    const sortedCommits = d3.sort(commits, d => -d.totalLines);
     const dots = svg.append('g')
     .selectAll('circle')
-    .data(commits)
+    .data(sortedCommits)
     .join('circle')
     .attr('cx', d => xScale(d.datetime))
     .attr('cy', d => yScale(d.hourFrac))
