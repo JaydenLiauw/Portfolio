@@ -48,6 +48,7 @@ const yScale = d3.scaleLinear()
     .append('svg')
     .attr('viewBox', `0 0 ${width} ${height}`)
     .style('overflow', 'visible');
+    createBrushSelector(svg);
     const [minLines, maxLines] = d3.extent(commits, d => d.totalLines);
 
     const rScale = d3.scaleSqrt()
@@ -165,4 +166,14 @@ function updateTooltipPosition(event) {
 
     tooltip.style.left = `${event.clientX + 10}px`;
     tooltip.style.top = `${event.clientY + 10}px`;
+}
+function createBrushSelector(svg) {
+    svg.call(
+        d3.brush()
+            .on('start brush end', brushed)
+    );
+}
+
+function brushed(event) {
+    console.log(event.selection);
 }
