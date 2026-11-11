@@ -13,10 +13,14 @@ projects.forEach(project => {
     const article = document.createElement('article');
 
     article.innerHTML = `
-        <h2>${project.title}</h2>
-        <img src="${project.image}" alt="${project.title}">
-        <p>${project.description}</p>
-    `;
+    <h2>
+        ${project.title === 'Bikewatching'
+            ? `<a href="https://jaydenliauw.github.io/bikewatching/" target="_blank">${project.title}</a>`
+            : project.title}
+    </h2>
+    <img src="${project.image}" alt="${project.title}">
+    <p>${project.description}</p>
+`;
 
     projectsContainer.appendChild(article);
 });
