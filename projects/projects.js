@@ -18,8 +18,7 @@ projects.forEach(project => {
             ? `<a href="https://jaydenliauw.github.io/bikewatching/" target="_blank">${project.title}</a>`
             : project.title}
     </h2>
-    <img src="${project.image}" alt="${project.title}">
-    <p>${project.description}</p>
+<img src="${project.image.startsWith('images/') ? '../' + project.image : project.image}" alt="${project.title}">    <p>${project.description}</p>
 `;
 
     projectsContainer.appendChild(article);
@@ -96,8 +95,7 @@ function updateProjects() {
 
         article.innerHTML = `
             <h2>${project.title}</h2>
-            <img src="${project.image}" alt="${project.title}">
-            <p>${project.description}</p>
+<img src="${project.image.startsWith('images/') ? '../' + project.image : project.image}" alt="${project.title}">            <p>${project.description}</p>
         `;
 
         projectsContainer.appendChild(article);
