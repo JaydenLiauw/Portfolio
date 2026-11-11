@@ -1,10 +1,12 @@
 [
-  {
-    "title": "My First Project",
-    "year": 2023,
-    "image": "https://placehold.co/600x400",
-    "description": "This is my first project."
-  },
+ 
+{
+  "title": "Bikewatching",
+  "year": 2026,
+  "image": "https://placehold.co/600x400?text=Bikewatching",
+  "description": "An interactive map of bike traffic in Boston and Cambridge using Mapbox and D3.js. Explore bike stations and traffic patterns throughout the day."
+},
+
   {
     "title": "My Second Project",
     "year": 2024,
