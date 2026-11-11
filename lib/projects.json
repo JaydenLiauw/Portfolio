@@ -3,7 +3,7 @@
 {
   "title": "Bikewatching",
   "year": 2026,
-  "image": "../images/bikewatching.png",
+  "image": "images/bikewatching.png",
   "description": "An interactive map of bike traffic in Boston and Cambridge using Mapbox and D3.js. Explore bike stations and traffic patterns throughout the day."
 },
 
