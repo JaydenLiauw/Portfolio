@@ -279,3 +279,22 @@ languageCounts.forEach(([language, count]) => {
     container.append('dd').text(count);
 });
 }
+
+const files = d3.groups(data, d => d.file)
+    .map(([name, lines]) => ({
+        name,
+        lines: lines.length
+    }))
+    .sort((a, b) => b.lines - a.lines);
+
+const filesContainer = d3.select('#files');
+
+filesContainer.selectAll('*').remove();
+
+files.forEach(file => {
+    filesContainer.append('dt')
+        .text(file.name);
+
+    filesContainer.append('dd')
+        .text(`${file.lines} lines`);
+});
