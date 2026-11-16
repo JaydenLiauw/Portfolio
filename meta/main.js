@@ -20,6 +20,8 @@ let commits = d3.groups(data, (d) => d.commit)
 
 console.log(commits);
 
+const filesContainer = d3.select('#files');
+
 let commitProgress = 100;
 
 let timeScale = d3.scaleTime()
@@ -116,11 +118,11 @@ function updateFilteredCommits() {
             d.datetime <= commitMaxTime ? 'auto' : 'none'
         );
 
+    updateFileVisualization();
 }
 
 
 onTimeSliderChange();
-updateFilteredCommits();
 
 
 dots.append('title')
@@ -281,7 +283,6 @@ languageCounts.forEach(([language, count]) => {
 });
 }
 
-const filesContainer = d3.select('#files');
 
 function updateFileVisualization() {
     const filteredData = data.filter(
