@@ -115,6 +115,8 @@ function updateFilteredCommits() {
         .style('pointer-events', d =>
             d.datetime <= commitMaxTime ? 'auto' : 'none'
         );
+
+        updateFileVisualization();
 }
 
 
@@ -280,31 +282,38 @@ languageCounts.forEach(([language, count]) => {
 });
 }
 
-const files = d3.groups(data, d => d.file)
-    .map(([name, lines]) => ({
-        name,
-        lines: lines.length
-    }))
-    .sort((a, b) => b.lines - a.lines);
-
 const filesContainer = d3.select('#files');
 
-filesContainer.selectAll('*').remove();
+function updateFileVisualization() {
+    const filteredData = data.filter(
+        d => d.datetime <= commitMaxTime
+    );
 
+    const files = d3.groups(filteredData, d => d.file)
+        .map(([name, lines]) => ({
+            name,
+            lines: lines.length
+        }))
+        .sort((a, b) => b.lines - a.lines);
 
-const maxFileLines = d3.max(files, d => d.lines);
+    filesContainer.selectAll('*').remove();
 
-files.forEach(file => {
-    filesContainer.append('dt')
-        .text(file.name);
+    const maxFileLines = d3.max(files, d => d.lines) || 1;
 
-    const dd = filesContainer.append('dd');
+    files.forEach(file => {
+        filesContainer.append('dt')
+            .text(file.name);
 
-    dd.append('div')
-        .attr('class', 'file-bar')
-        .style('width', `${file.lines / maxFileLines * 100}%`);
+        const dd = filesContainer.append('dd');
 
-    dd.append('span')
-        .text(`${file.lines} lines`);
-});
+        dd.append('div')
+            .attr('class', 'file-bar')
+            .style('width', `${file.lines / maxFileLines * 100}%`);
+
+        dd.append('span')
+            .text(`${file.lines} lines`);
+    });
+}
+
+updateFileVisualization();
 
