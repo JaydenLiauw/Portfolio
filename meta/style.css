@@ -69,3 +69,24 @@
 circle.selected {
     fill: orange;
 }
+
+.commit-filter {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    margin: 1em 0;
+}
+
+.commit-filter label {
+    white-space: nowrap;
+}
+
+.commit-filter input[type="range"] {
+    flex: 1;
+    min-width: 0;
+}
+
+.commit-filter time {
+    white-space: nowrap;
+    font-style: italic;
+}
