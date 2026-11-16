@@ -105,3 +105,22 @@ circle.selected {
     }
 }
 
+#files {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px 20px;
+    align-items: center;
+}
+
+#files dt {
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
+#files dd {
+    margin: 0;
+    text-align: right;
+    color: #666;
+}
+
+
