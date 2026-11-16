@@ -105,10 +105,18 @@ const dots = svg.append('g')
 
 
 function updateFilteredCommits() {
-    dots.style('display', d =>
-        d.datetime <= commitMaxTime ? null : 'none'
-    );
+    dots
+        .interrupt()
+        .transition()
+        .duration(300)
+        .style('opacity', d =>
+            d.datetime <= commitMaxTime ? 1 : 0
+        )
+        .style('pointer-events', d =>
+            d.datetime <= commitMaxTime ? 'auto' : 'none'
+        );
 }
+
 
 onTimeSliderChange();
 updateFilteredCommits();
