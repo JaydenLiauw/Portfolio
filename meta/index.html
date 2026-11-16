@@ -17,8 +17,25 @@
     This page shows statistics and visualizations
     about the code used in my portfolio website.
   </p>
-  <h2>Summary</h2>
-  <dl id="stats"></dl>
+  
+<h2>Summary</h2>
+
+<div class="commit-filter">
+  <label for="commit-progress">
+    Show commits until:
+  </label>
+  <input
+    type="range"
+    id="commit-progress"
+    min="0"
+    max="100"
+    value="100"
+  >
+  <time id="commit-max-time"></time>
+</div>
+
+<dl id="stats"></dl>
+
   <h2>Commits by Time of Day</h2>
   <p id="selection-count">No commits selected</p>
   <dl id="language-breakdown" class="stats"></dl>
