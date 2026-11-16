@@ -116,7 +116,6 @@ function updateFilteredCommits() {
             d.datetime <= commitMaxTime ? 'auto' : 'none'
         );
 
-        updateFileVisualization();
 }
 
 
