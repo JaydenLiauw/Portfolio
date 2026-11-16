@@ -123,4 +123,22 @@ circle.selected {
     color: #666;
 }
 
+#files dd {
+    position: relative;
+    min-width: 150px;
+}
+
+.file-bar {
+    height: 12px;
+    background: steelblue;
+    border-radius: 4px;
+    transition: width 300ms ease;
+}
+
+#files dd span {
+    display: block;
+    margin-top: 4px;
+}
+
+
 

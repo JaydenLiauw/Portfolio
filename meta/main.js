@@ -291,10 +291,20 @@ const filesContainer = d3.select('#files');
 
 filesContainer.selectAll('*').remove();
 
+
+const maxFileLines = d3.max(files, d => d.lines);
+
 files.forEach(file => {
     filesContainer.append('dt')
         .text(file.name);
 
-    filesContainer.append('dd')
+    const dd = filesContainer.append('dd');
+
+    dd.append('div')
+        .attr('class', 'file-bar')
+        .style('width', `${file.lines / maxFileLines * 100}%`);
+
+    dd.append('span')
         .text(`${file.lines} lines`);
 });
+
