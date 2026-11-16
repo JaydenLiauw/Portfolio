@@ -115,6 +115,8 @@ function updateFilteredCommits() {
         .style('pointer-events', d =>
             d.datetime <= commitMaxTime ? 'auto' : 'none'
         );
+
+        updateFileVisualization();
 }
 
 
@@ -307,4 +309,34 @@ files.forEach(file => {
     dd.append('span')
         .text(`${file.lines} lines`);
 });
+
+function updateFileVisualization() {
+    const filteredData = data.filter(
+        d => d.datetime <= commitMaxTime
+    );
+
+    const fileCounts = d3.rollups(
+        filteredData,
+        lines => lines.length,
+        d => d.file
+    );
+
+    const sortedFiles = d3.sort(
+        fileCounts,
+        d => -d[1]
+    );
+
+    const container = d3.select('#files');
+
+    const files = container
+        .selectAll('div.file')
+        .data(sortedFiles, d => d[0])
+        .join('div')
+        .attr('class', 'file');
+
+    files.html(d => `
+        <span>${d[0]}</span>
+        <span>${d[1]} lines</span>
+    `);
+}
 
