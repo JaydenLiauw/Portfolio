@@ -35,17 +35,25 @@ function onTimeSliderChange() {
 
     commitMaxTime = timeScale.invert(commitProgress);
 
+    
     document.getElementById('commit-max-time').textContent =
         commitMaxTime.toLocaleString('en', {
             dateStyle: 'long',
             timeStyle: 'short'
         });
+
+    
+    if (typeof updateFilteredCommits === 'function' &&
+        typeof dots !== 'undefined') {
+        updateFilteredCommits();
+    }
+
 }
+
 
 document.getElementById('commit-progress')
     .addEventListener('input', onTimeSliderChange);
 
-onTimeSliderChange();
 
 const width = 1000;
 const height = 600;
@@ -83,8 +91,10 @@ const yScale = d3.scaleLinear()
     .domain([minLines, maxLines])
     .range([2, 30]);
     
-    const sortedCommits = d3.sort(commits, d => -d.totalLines);
-    const dots = svg.append('g')
+    
+const sortedCommits = d3.sort(commits, d => -d.totalLines);
+
+const dots = svg.append('g')
     .selectAll('circle')
     .data(sortedCommits)
     .join('circle')
@@ -92,6 +102,17 @@ const yScale = d3.scaleLinear()
     .attr('cy', d => yScale(d.hourFrac))
     .attr('r', d => rScale(d.totalLines))
     .attr('fill', 'steelblue');
+
+
+function updateFilteredCommits() {
+    dots.style('display', d =>
+        d.datetime <= commitMaxTime ? null : 'none'
+    );
+}
+
+onTimeSliderChange();
+updateFilteredCommits();
+
 
 dots.append('title')
     .text(d => `Commit: ${d.id.slice(0, 7)}
