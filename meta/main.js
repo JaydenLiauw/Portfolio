@@ -296,6 +296,8 @@ function updateFileVisualization() {
         lines
     }))
     .sort((a, b) => b.lines.length - a.lines.length);
+
+filesContainer.selectAll('*').remove();
         .map(([name, lines]) => ({
             name,
             lines: lines.length
