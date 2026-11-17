@@ -1,5 +1,7 @@
+import scrollama from 'https://cdn.jsdelivr.net/npm/scrollama@3.2.0/+esm';
+
 let data = await d3.csv('loc.csv', (row) => ({
-    ...row,
+     ...row,
     line: Number(row.line),
     depth: Number(row.depth),
     length: Number(row.length),
@@ -344,6 +346,20 @@ d3.select('#scatter-story')
             Then I looked over all I had made, and I saw that it was very good.
         `,
     );
+
+function onStepEnter(response) {
+    console.log(response);
+}
+
+const scroller = scrollama();
+
+scroller
+    .setup({
+        container: '#scrolly-1',
+        step: '#scrolly-1 .step',
+    })
+    .onStepEnter(onStepEnter);
+
 
 
 
