@@ -348,9 +348,14 @@ d3.select('#scatter-story')
     );
 
 
+
 function onStepEnter(response) {
-    console.log(response.element.__data__.datetime);
+    const commit = response.element.__data__;
+
+    commitMaxTime = commit.datetime;
+    updateFilteredCommits();
 }
+
 
 
 const scroller = scrollama();
