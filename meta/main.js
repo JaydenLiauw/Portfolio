@@ -17,9 +17,12 @@ let commits = d3.groups(data, (d) => d.commit)
         author: lines[0].author,
         hourFrac: lines[0].datetime.getHours()
             + lines[0].datetime.getMinutes() / 60,
-        totalLines: lines.length,
+        
+totalLines: lines.length,
 lines: lines,
-    }));
+}))
+.sort((a, b) => a.datetime - b.datetime);
+
 
 console.log(commits);
 
