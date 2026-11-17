@@ -16,6 +16,7 @@ let commits = d3.groups(data, (d) => d.commit)
         hourFrac: lines[0].datetime.getHours()
             + lines[0].datetime.getMinutes() / 60,
         totalLines: lines.length,
+lines: lines,
     }));
 
 console.log(commits);
@@ -290,6 +291,11 @@ function updateFileVisualization() {
     );
 
     const files = d3.groups(filteredData, d => d.file)
+    .map(([name, lines]) => ({
+        name,
+        lines
+    }))
+    .sort((a, b) => b.lines.length - a.lines.length);
         .map(([name, lines]) => ({
             name,
             lines: lines.length
@@ -298,22 +304,22 @@ function updateFileVisualization() {
 
     filesContainer.selectAll('*').remove();
 
-    const maxFileLines = d3.max(files, d => d.lines) || 1;
+    
+files.forEach(file => {
+    const div = filesContainer.append('div');
 
-    files.forEach(file => {
-        filesContainer.append('dt')
-            .text(file.name);
+    div.append('dt')
+        .html(`<code>${file.name}</code>
+               <small>${file.lines.length} lines</small>`);
 
-        const dd = filesContainer.append('dd');
-
-        dd.append('div')
-            .attr('class', 'file-bar')
-            .style('width', `${file.lines / maxFileLines * 100}%`);
-
-        dd.append('span')
-            .text(`${file.lines} lines`);
-    });
+    div.append('dd')
+        .selectAll('div')
+        .data(file.lines)
+        .join('div')
+        .attr('class', 'loc');
+});
 }
 
 updateFileVisualization();
+
 
