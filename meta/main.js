@@ -22,6 +22,7 @@ lines: lines,
 console.log(commits);
 
 const filesContainer = d3.select('#files');
+const colors = d3.scaleOrdinal(d3.schemeTableau10);
 
 let commitProgress = 100;
 
@@ -311,7 +312,8 @@ function updateFileVisualization() {
             .selectAll('div')
             .data(file.lines)
             .join('div')
-            .attr('class', 'loc');
+.attr('class', 'loc')
+.attr('style', d => `--color: ${colors(d.type)}`);
     });
 }
 
