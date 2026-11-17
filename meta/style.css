@@ -159,6 +159,25 @@ circle.selected {
     margin-left: 0;
 }
 
+#files {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1em;
+}
+
+#files > div {
+    min-width: 0;
+}
+
+#files dt {
+    grid-column: 1 / -1;
+}
+
+#files dd {
+    grid-column: 1 / -1;
+}
+
+
 
 
 
