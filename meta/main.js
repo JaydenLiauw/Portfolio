@@ -285,43 +285,37 @@ languageCounts.forEach(([language, count]) => {
 }
 
 
+
 function updateFileVisualization() {
     const filteredData = data.filter(
         d => d.datetime <= commitMaxTime
     );
 
     const files = d3.groups(filteredData, d => d.file)
-    .map(([name, lines]) => ({
-        name,
-        lines
-    }))
-    .sort((a, b) => b.lines.length - a.lines.length);
-
-filesContainer.selectAll('*').remove();
         .map(([name, lines]) => ({
             name,
-            lines: lines.length
+            lines
         }))
-        .sort((a, b) => b.lines - a.lines);
+        .sort((a, b) => b.lines.length - a.lines.length);
 
     filesContainer.selectAll('*').remove();
 
-    
-files.forEach(file => {
-    const div = filesContainer.append('div');
+    files.forEach(file => {
+        const div = filesContainer.append('div');
 
-    div.append('dt')
-        .html(`<code>${file.name}</code>
-               <small>${file.lines.length} lines</small>`);
+        div.append('dt')
+            .html(`<code>${file.name}</code>
+                   <small>${file.lines.length} lines</small>`);
 
-    div.append('dd')
-        .selectAll('div')
-        .data(file.lines)
-        .join('div')
-        .attr('class', 'loc');
-});
+        div.append('dd')
+            .selectAll('div')
+            .data(file.lines)
+            .join('div')
+            .attr('class', 'loc');
+    });
 }
 
 updateFileVisualization();
+
 
 
